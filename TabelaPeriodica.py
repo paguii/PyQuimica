@@ -213,10 +213,31 @@ class TabelaPeriodica:
         self.listaElementos[17].append(neonio)
         self.listaElementos[17].append(argonio)
         self.listaElementos[17].append(criptonio)
+        self.listaElementos[17].append(xenonio)
         self.listaElementos[17].append(radonio)
 
     def desenhaTabelaPeriodica(self, gameDisplay):
         for i in range(0, len(self.listaElementos)):
             for j in range(0, len(self.listaElementos[i])):
+
+                alturaInicial = 20
+                paddingX = 30
+
+                if i == 0:
+                    alturaInicial = 20
+
+                elif i == 1:
+                    alturaInicial = 95
+
+                elif i >= 2 and i <= 11:
+                    alturaInicial = 245
+
+                elif i >= 12 and i <= 16:
+                    alturaInicial = 95
+
+                elif i == 17:
+                    alturaInicial = 20
+
+
                 elemento = self.listaElementos[i][j]
-                elemento.desenhaElemento(gameDisplay, i*1.02+20, j+20)
+                elemento.desenhaElemento(gameDisplay, paddingX+i*60,  alturaInicial+(j*75))

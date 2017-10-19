@@ -32,9 +32,9 @@ class ElementoQuimico:
         familiaBoro = (72, 209, 204)
         familiaCarbono = (107, 142, 35)
         familiaNitrogenio = (34, 139, 34)
-        calcogenios = (72, 61, 139)
+        calcogenios = (221,160,221)
         halogenios = (255, 105, 180)
-        gasesNobres = (65, 105, 225)
+        gasesNobres = (135,206,250)
 
         if int(self.familia) == 0:
             self.cor = hidrogenio
