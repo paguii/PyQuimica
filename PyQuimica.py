@@ -1,4 +1,5 @@
 import pygame
+import Mensagem
 import os, sys
 
 from TabelaPeriodica import TabelaPeriodica
@@ -15,12 +16,19 @@ black = (0,0,0)
 white = (255,255,255)
 green = (0,255,0)
 
-pygame.font.init()
-fonteTituloJogo = pygame.font.SysFont('comicsansms', 52)
+pontuacao = 0
 
+pygame.font.init()
+
+fonteTituloJogo = pygame.font.SysFont('comicsansms', 52)
 fonteTituloJogo = fonteTituloJogo.render("PyQuímica", 1, black)
 
+fonteNomeDoJogador = pygame.font.SysFont('comicsansms', 24)
+
+fontePontuacao = pygame.font.SysFont('comicsansms', 24)
+
 gameExit = False
+firstInit = True;
 
 while not gameExit:
     for event in pygame.event.get():
@@ -30,14 +38,30 @@ while not gameExit:
 
     gameDisplay.fill(gray)
 
-    #TITULO DO JOGO
-    gameDisplay.blit(fonteTituloJogo, (410, 20))
+    if firstInit == True:
+        nome = Mensagem.ask(gameDisplay, 'Nome')
+        if nome:
+            fonteNomeDoJogador = fonteNomeDoJogador.render('Jogador: ' + nome, 1, black)
 
-    #MONTA TABELA PERIODICA
-    tabela.desenhaTabelaPeriodica(gameDisplay)
+            firstInit = False
+    else:
 
-    #REFRESH NA TELA
-    pygame.display.update()
+        #TITULO DO JOGO
+        gameDisplay.blit(fonteTituloJogo, (440, 20))
+
+        #SAUDAÇÃO
+        gameDisplay.blit(fonteNomeDoJogador, (460, 100))
+
+        #PONTUACAO
+        gameDisplay.blit(fontePontuacao.render('Pontuação: ' + str(pontuacao), 1, black), (900, 5))
+
+        #MONTA TABELA PERIODICA
+        tabela.desenhaTabelaPeriodica(gameDisplay)
+
+        #REFRESH NA TELA
+        pygame.display.update()
+
+        pontuacao = pontuacao +1
 
 pygame.display.update()
 pygame.quit()

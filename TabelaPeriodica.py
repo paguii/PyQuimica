@@ -220,23 +220,23 @@ class TabelaPeriodica:
         for i in range(0, len(self.listaElementos)):
             for j in range(0, len(self.listaElementos[i])):
 
-                alturaInicial = 20
+                alturaInicial = 80
                 paddingX = 30
 
                 if i == 0:
-                    alturaInicial = 20
+                    alturaInicial = alturaInicial
 
                 elif i == 1:
-                    alturaInicial = 95
+                    alturaInicial = alturaInicial + 75
 
                 elif i >= 2 and i <= 11:
-                    alturaInicial = 245
+                    alturaInicial = alturaInicial + 75 * 3
 
                 elif i >= 12 and i <= 16:
-                    alturaInicial = 95
+                    alturaInicial = alturaInicial + 75
 
                 elif i == 17:
-                    alturaInicial = 20
+                    alturaInicial = alturaInicial
 
 
                 elemento = self.listaElementos[i][j]
