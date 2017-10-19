@@ -49,15 +49,13 @@ class ElementoQuimico:
         elif int(self.familia) == 5:
             self.cor = metaisAlcalinosTerrosos
         elif int(self.familia) == 6:
-            self.cor = familiaNitrogenio
-        elif int(self.familia) == 7:
             self.cor = calcogenios
-        elif int(self.familia) == 8:
+        elif int(self.familia) == 7:
             self.cor = halogenios
-        elif int(self.familia) == 9:
+        elif int(self.familia) == 8:
             self.cor = gasesNobres
         else:
-            self.cor = (0, 0, 0)
+            self.cor = (255,255,224)
 
     def desenhaElemento(self, gameDisplay, x, y):
         posicaoNomeElemento = (x + 2, y + 55)
