@@ -23,6 +23,10 @@ pygame.font.init()
 fonteTituloJogo = pygame.font.SysFont('comicsansms', 52)
 fonteNomeDoJogador = pygame.font.SysFont('comicsansms', 24)
 fontePontuacao = pygame.font.SysFont('comicsansms', 24)
+fonteSugestao = pygame.font.SysFont('comicsansms', 24)
+fonteElemento = pygame.font.SysFont('comicsansms', 20)
+
+tubo = pygame.image.load(os.path.join('resources', 'tubo.png'))
 
 gameExit = False
 firstInit = True;
@@ -40,7 +44,6 @@ while not gameExit:
         if nome:
             firstInit = False
     else:
-
         #TITULO DO JOGO
         gameDisplay.blit(fonteTituloJogo.render("PyQuímica", 1, black), (440, 20))
 
@@ -49,6 +52,13 @@ while not gameExit:
 
         #PONTUACAO
         gameDisplay.blit(fontePontuacao.render('Pontuação: ' + str(pontuacao), 1, black), (900, 5))
+
+        #TUBO DE ENSAIO
+        gameDisplay.blit(pygame.transform.scale(tubo, (115, 115)), (500,600))
+
+        #ELEMENTO A SER ADVINHADO
+        gameDisplay.blit(fonteSugestao.render('Elemento:', 1, black), (680, 600))
+        gameDisplay.blit(fonteElemento.render('Cloreto de Sódio', 1, black), (705, 632))
 
         #MONTA TABELA PERIODICA
         tabela.desenhaTabelaPeriodica(gameDisplay)
