@@ -135,7 +135,6 @@ while not gameExit:
             if mostraMensagem:
                 gameDisplay.blit(fonteMensagem.render(mensagem, 1, black), (240, 200))
                 mostraMensagemTempo = mostraMensagemTempo + 1
-                print(mostraMensagemTempo)
                 if mostraMensagemTempo > 100:
                     mostraMensagem = False
                     mostraMensagemTempo = 0
