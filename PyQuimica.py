@@ -41,6 +41,7 @@ tubo = pygame.image.load(os.path.join('resources', 'tubo.png'))
 gameExit = False
 firstInit = True;
 listaElementosSelecionados = []
+mostraMensagemTempo = 0;
 
 while not gameExit:
 
@@ -83,7 +84,6 @@ while not gameExit:
                 except:
                     print('Elemento não definido')
 
-
     if firstInit == True:
         nome = Mensagem.ask(gameDisplay, 'Nome')
         if nome:
@@ -116,7 +116,6 @@ while not gameExit:
 
         #DRAG AND DROP
         botaoMouse = pygame.mouse.get_pressed()
-
         try:
             if botaoMouse[0] == 1:
                 posicaoMouseDrag = pygame.mouse.get_pos()
@@ -132,11 +131,14 @@ while not gameExit:
             print('Nao existe ultimo elemento')
 
         #MOSTRA MENSAGEM
-
         try:
             if mostraMensagem:
                 gameDisplay.blit(fonteMensagem.render(mensagem, 1, black), (240, 200))
-                mostraMensagem = False
+                mostraMensagemTempo = mostraMensagemTempo + 1
+                print(mostraMensagemTempo)
+                if mostraMensagemTempo > 100:
+                    mostraMensagem = False
+                    mostraMensagemTempo = 0
 
         except:
             print('Mensagem nao definida')
