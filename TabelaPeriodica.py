@@ -240,4 +240,15 @@ class TabelaPeriodica:
 
 
                 elemento = self.listaElementos[i][j]
-                elemento.desenhaElemento(gameDisplay, paddingX+i*60,  alturaInicial+(j*75))
+
+                elemento.x = paddingX+(i*60);
+                elemento.y = alturaInicial+(j*75);
+
+                elemento.desenhaElemento(gameDisplay, paddingX+(i*60),  alturaInicial+(j*75))
+
+    def elementoClick(self, x, y):
+        for i in range(0, len(self.listaElementos)):
+            for j in range(0, len(self.listaElementos[i])):
+                elemento = self.listaElementos[i][j]
+                if x >= elemento.x and x <= elemento.x + elemento.base and y >= elemento.y and y <= elemento.y + elemento.altura:
+                    return elemento
