@@ -37,6 +37,7 @@ fonteBotaoConfirmar = pygame.font.SysFont('comicsansms', 24)
 fonteMensagem = pygame.font.SysFont('comicsansms', 36)
 
 tubo = pygame.image.load(os.path.join('resources', 'tubo.png'))
+logo = pygame.image.load(os.path.join('resources', 'pyquimica.png'))
 
 gameExit = False
 firstInit = True;
@@ -85,16 +86,20 @@ while not gameExit:
                     print('Elemento não definido')
 
     if firstInit == True:
-        nome = Mensagem.ask(gameDisplay, 'Nome')
+        # TITULO DO JOGO
+        #gameDisplay.blit(fonteTituloJogo.render("PyQuímica", 1, black), (440, 20))
+        gameDisplay.blit(pygame.transform.scale(logo, (176, 107)), (500, 20))
+        gameDisplay.blit(fonteTituloJogo.render("Digite seu nome", 1, black), (460, 300))
+        nome = Mensagem.ask(gameDisplay, '')
         if nome:
             pergunta.novaPergunta()
             firstInit = False
     else:
         #TITULO DO JOGO
-        gameDisplay.blit(fonteTituloJogo.render("PyQuímica", 1, black), (440, 20))
+        gameDisplay.blit(pygame.transform.scale(logo, (176, 107)), (500, 20))
 
         #SAUDAÇÃO
-        gameDisplay.blit(fonteNomeDoJogador.render('Jogador: ' + nome, 1, black), (460, 100))
+        gameDisplay.blit(fonteNomeDoJogador.render('Jogador: ' + nome, 1, black), (460, 150))
 
         #PONTUACAO
         gameDisplay.blit(fontePontuacao.render('Pontuação: ' + str(int(pontuacao)), 1, black), (900, 5))
